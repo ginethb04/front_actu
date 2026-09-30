@@ -1,8 +1,6 @@
-<!-- src/routes/postulaciones/+page.svelte -->
 <script>
   import { user, ROLES } from '$lib/stores/auth.js';
 
-  // Estados reactivos para búsqueda y filtros
   let busqueda = $state('');
   let filtroEstado = $state('todos');
 
@@ -23,15 +21,13 @@
 
 <div class="bg-modulo-postulaciones flex-grow-1 py-4">
   <div class="container">
-    
-    <!-- ENCABEZADO INSTITUCIONAL -->
+   
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
       <div>
         <h2 class="fw-bold mb-1"><i class="bi bi-briefcase-fill text-success me-2"></i>Ofertas y Postulaciones</h2>
         <p class="text-muted small mb-0">Explora la bolsa de vacantes institucionales y gestiona el estado de tus postulaciones.</p>
       </div>
-      
-      <!-- BOTÓN DE PUBLICAR OFERTA -->
+
       {#if $user.rol === ROLES.ADMINISTRADOR || $user.rol === ROLES.EMPRESA}
         <button class="btn btn-success text-white fw-bold shadow-sm rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalOferta">
           <i class="bi bi-plus-circle me-1"></i> Publicar Oferta
@@ -81,7 +77,6 @@
       </div>
     </div>
 
-    <!-- BARRA DE HERRAMIENTAS  -->
     <div class="card border-0 shadow-sm rounded-4 mb-4 p-3 bg-white">
       <div class="row g-3 align-items-center">
         <div class="col-md-8">
@@ -175,22 +170,26 @@
         <h5 class="modal-title fw-bold"><i class="bi bi-briefcase-fill me-2"></i>Gestión de Oferta de Práctica</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar modal"></button>
       </div>
+
       <div class="modal-body p-4">
         <form onsubmit={(e) => e.preventDefault()} class="row g-3">
           <div class="col-12">
             <label for="titulo_o" class="form-label fw-bold small">Título de la Oferta</label>
             <input type="text" id="titulo_o" class="form-control bg-light" placeholder="Ej. Desarrollador Junior Frontend" />
           </div>
+
           <div class="col-md-6">
             <label for="vacantes_o" class="form-label fw-bold small">Número de Vacantes</label>
             <input type="number" id="vacantes_o" class="form-control bg-light" placeholder="1" min="1" />
           </div>
+
           <div class="col-md-6">
             <label for="cierre_o" class="form-label fw-bold small">Fecha de Cierre</label>
             <input type="date" id="cierre_o" class="form-control bg-light" />
           </div>
         </form>
       </div>
+      
       <div class="modal-footer bg-light px-4 py-3">
         <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-success text-white px-4" data-bs-dismiss="modal">Guardar Oferta</button>

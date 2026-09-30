@@ -1,8 +1,5 @@
-<!-- src/routes/practicas/+page.svelte -->
 <script>
   import { user, ROLES } from '$lib/stores/auth.js';
-
-
   let busqueda = $state('');
   let filtroEstado = $state('todos');
 
@@ -44,6 +41,7 @@
             <div class="bg-primary bg-opacity-10 p-3 rounded-3 text-primary me-3">
               <i class="bi bi-journal-bookmark-fill fs-4"></i>
             </div>
+
             <div>
               <span class="text-muted small d-block">Prácticas Activas</span>
               <h4 class="fw-bold mb-0">{practicas.filter(p => p.estado === 'En Curso').length} En Curso</h4>
@@ -51,12 +49,14 @@
           </div>
         </div>
       </div>
+
       <div class="col-md-4">
         <div class="card border-0 shadow-sm p-3 rounded-4 h-100 bg-white">
           <div class="d-flex align-items-center">
             <div class="bg-success bg-opacity-10 p-3 rounded-3 text-success me-3">
               <i class="bi bi-patch-check-fill fs-4"></i>
             </div>
+
             <div>
               <span class="text-muted small d-block">Evaluadas</span>
               <h4 class="fw-bold mb-0">{practicas.filter(p => p.estado === 'Evaluada').length} Finalizadas</h4>
@@ -64,12 +64,14 @@
           </div>
         </div>
       </div>
+
       <div class="col-md-4">
         <div class="card border-0 shadow-sm p-3 rounded-4 h-100 bg-white">
           <div class="d-flex align-items-center">
             <div class="bg-warning bg-opacity-10 p-3 rounded-3 text-warning me-3">
               <i class="bi bi-clock-history fs-4"></i>
             </div>
+
             <div>
               <span class="text-muted small d-block">Periodo Académico</span>
               <h4 class="fw-bold mb-0">2026 - II</h4>
@@ -87,6 +89,7 @@
             <input type="text" class="form-control bg-light border-start-0" placeholder="Buscar por nombre de estudiante o empresa..." bind:value={busqueda} />
           </div>
         </div>
+
         <div class="col-md-4">
           <select class="form-select bg-light" bind:value={filtroEstado}>
             <option value="todos">Filtrar por estado (Todos)</option>
@@ -170,22 +173,26 @@
         <h5 class="modal-title fw-bold"><i class="bi bi-journal-plus me-2"></i>Asignación de Práctica Profesional</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar modal"></button>
       </div>
+
       <div class="modal-body p-4">
         <form onsubmit={(e) => e.preventDefault()} class="row g-3">
           <div class="col-12">
             <label for="est_p" class="form-label fw-bold small">Estudiante</label>
             <input type="text" id="est_p" class="form-control bg-light" placeholder="Nombre del estudiante" />
           </div>
+
           <div class="col-md-6">
             <label for="emp_p" class="form-label fw-bold small">Empresa</label>
             <input type="text" id="emp_p" class="form-control bg-light" placeholder="Empresa aliada" />
           </div>
+
           <div class="col-md-6">
             <label for="tut_p" class="form-label fw-bold small">Tutor Asignado</label>
             <input type="text" id="tut_p" class="form-control bg-light" placeholder="Nombre del tutor" />
           </div>
         </form>
       </div>
+      
       <div class="modal-footer bg-light px-4 py-3">
         <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-primary text-white px-4" data-bs-dismiss="modal">Guardar Asignación</button>

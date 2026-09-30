@@ -1,4 +1,3 @@
-<!-- src/routes/bitacoras/+page.svelte -->
 <script>
   import { user, ROLES } from '$lib/stores/auth.js';
 
@@ -25,14 +24,12 @@
 <div class="bg-modulo-bitacoras flex-grow-1 py-4">
   <div class="container">
     
-    <!-- ENCABEZADO INSTITUCIONAL -->
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
       <div>
         <h2 class="fw-bold mb-1"><i class="bi bi-journal-text text-success me-2"></i>Gestión de Bitácoras de Práctica</h2>
         <p class="text-muted small mb-0">Registro y supervisión de reportes semanales de actividades y acumulación de horas del periodo.</p>
       </div>
-      
-      <!-- BOTÓN DE REGISTRAR BITÁCORA  -->
+     
       {#if $user.rol === ROLES.ESTUDIANTE}
         <button class="btn btn-success text-white fw-bold shadow-sm rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalBitacora">
           <i class="bi bi-plus-circle me-1"></i> Registrar Bitácora
@@ -55,6 +52,7 @@
           </div>
         </div>
       </div>
+
       <div class="col-md-4">
         <div class="card border-0 shadow-sm p-3 rounded-4 h-100 bg-white">
           <div class="d-flex align-items-center">
@@ -68,6 +66,7 @@
           </div>
         </div>
       </div>
+
       <div class="col-md-4">
         <div class="card border-0 shadow-sm p-3 rounded-4 h-100 bg-white">
           <div class="d-flex align-items-center">
@@ -83,7 +82,6 @@
       </div>
     </div>
 
-    <!-- BARRA DE HERRAMIENTAS -->
     <div class="card border-0 shadow-sm rounded-4 mb-4 p-3 bg-white">
       <div class="row g-3 align-items-center">
         <div class="col-md-8">
@@ -92,6 +90,7 @@
             <input type="text" class="form-control bg-light border-start-0" placeholder="Buscar por estudiante o semana..." bind:value={busqueda} />
           </div>
         </div>
+
         <div class="col-md-4">
           <select class="form-select bg-light" bind:value={filtroEstado}>
             <option value="todos">Filtrar por estado (Todos)</option>
@@ -103,7 +102,6 @@
       </div>
     </div>
 
-    <!-- TABLA DE BITÁCORAS -->
     <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
       <div class="card-body p-0">
         <div class="table-responsive">
@@ -168,7 +166,6 @@
   </div>
 </div>
 
-<!-- BITÁCORA -->
 <div class="modal fade" id="modalBitacora" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-0 rounded-4 overflow-hidden shadow">

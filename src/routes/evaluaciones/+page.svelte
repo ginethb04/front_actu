@@ -1,4 +1,3 @@
-<!-- src/routes/evaluaciones/+page.svelte -->
 <script>
   import { user, ROLES } from '$lib/stores/auth.js';
 
@@ -25,14 +24,13 @@
 <div class="bg-modulo-evaluaciones flex-grow-1 py-4">
   <div class="container">
     
-    <!-- ENCABEZADO INSTITUCIONAL -->
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
       <div>
         <h2 class="fw-bold mb-1"><i class="bi bi-award text-warning me-2"></i>Evaluaciones de Desempeño</h2>
         <p class="text-muted small mb-0">Gestión de calificaciones parciales y finales emitidas por tutores y empresas supervisoras.</p>
       </div>
       
-      <!-- BOTÓN DE NUEVA EVALUACIÓN  -->
+
       {#if $user.rol === ROLES.TUTOR || $user.rol === ROLES.ADMINISTRADOR}
         <button class="btn btn-warning text-dark fw-bold shadow-sm rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalEvaluacion">
           <i class="bi bi-plus-circle me-1"></i> Emitir Evaluación
@@ -47,6 +45,7 @@
             <div class="bg-warning bg-opacity-10 p-3 rounded-3 text-warning me-3">
               <i class="bi bi-award-fill fs-4"></i>
             </div>
+
             <div>
               <span class="text-muted small d-block">Promedio General</span>
               <h4 class="fw-bold mb-0">4.8 / 5.0 Excelente</h4>
@@ -54,12 +53,14 @@
           </div>
         </div>
       </div>
+
       <div class="col-md-4">
         <div class="card border-0 shadow-sm p-3 rounded-4 h-100 bg-white">
           <div class="d-flex align-items-center">
             <div class="bg-success bg-opacity-10 p-3 rounded-3 text-success me-3">
               <i class="bi bi-check-circle-fill fs-4"></i>
             </div>
+
             <div>
               <span class="text-muted small d-block">Evaluaciones Listas</span>
               <h4 class="fw-bold mb-0">1 Completada</h4>
@@ -67,12 +68,14 @@
           </div>
         </div>
       </div>
+
       <div class="col-md-4">
         <div class="card border-0 shadow-sm p-3 rounded-4 h-100 bg-white">
           <div class="d-flex align-items-center">
             <div class="bg-primary bg-opacity-10 p-3 rounded-3 text-primary me-3">
               <i class="bi bi-clock-fill fs-4"></i>
             </div>
+
             <div>
               <span class="text-muted small d-block">Por Emitir</span>
               <h4 class="fw-bold mb-0">1 Pendiente</h4>
@@ -82,7 +85,6 @@
       </div>
     </div>
 
-    <!-- BARRA DE HERRAMIENTAS-->
     <div class="card border-0 shadow-sm rounded-4 mb-4 p-3 bg-white">
       <div class="row g-3 align-items-center">
         <div class="col-md-8">
@@ -91,6 +93,7 @@
             <input type="text" class="form-control bg-light border-start-0" placeholder="Buscar por estudiante o evaluador..." bind:value={busqueda} />
           </div>
         </div>
+
         <div class="col-md-4">
           <select class="form-select bg-light" bind:value={filtroTipo}>
             <option value="todos">Filtrar por tipo (Todos)</option>
@@ -101,7 +104,6 @@
       </div>
     </div>
 
-    <!-- TABLA DE EVALUACIONES -->
     <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
       <div class="card-body p-0">
         <div class="table-responsive">
@@ -161,7 +163,7 @@
   </div>
 </div>
 
-<!-- EVALUACIÓN -->
+
 <div class="modal fade" id="modalEvaluacion" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-0 rounded-4 overflow-hidden shadow">
@@ -169,12 +171,14 @@
         <h5 class="modal-title fw-bold"><i class="bi bi-award-fill me-2"></i>Emitir Calificación de Desempeño</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar modal"></button>
       </div>
+
       <div class="modal-body p-4">
         <form onsubmit={(e) => e.preventDefault()} class="row g-3">
           <div class="col-12">
             <label for="est_ev" class="form-label fw-bold small">Estudiante Evaluado</label>
             <input type="text" id="est_ev" class="form-control bg-light" placeholder="Nombre completo del estudiante" />
           </div>
+
           <div class="col-md-6">
             <label for="tipo_ev" class="form-label fw-bold small">Tipo de Evaluación</label>
             <select id="tipo_ev" class="form-select bg-light">
@@ -182,16 +186,19 @@
               <option value="final">Final</option>
             </select>
           </div>
+
           <div class="col-md-6">
             <label for="nota_ev" class="form-label fw-bold small">Calificación (0.0 - 5.0)</label>
             <input type="number" id="nota_ev" class="form-control bg-light" placeholder="4.8" step="0.1" min="0" max="5" />
           </div>
+
           <div class="col-12">
             <label for="com_ev" class="form-label fw-bold small">Observaciones y Comentarios</label>
             <textarea id="com_ev" class="form-control bg-light" rows="3" placeholder="Retroalimentación sobre el rendimiento del estudiante..."></textarea>
           </div>
         </form>
       </div>
+      
       <div class="modal-footer bg-light px-4 py-3">
         <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-warning text-dark fw-bold px-4" data-bs-dismiss="modal">Guardar Calificación</button>

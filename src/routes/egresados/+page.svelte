@@ -42,8 +42,8 @@
 
 <div class="bg-modulo-usuarios flex-grow-1 py-4">
   <div class="container">
-    
-    <!-- ENCABEZADO DE MÓDULO -->
+ 
+
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
       <div>
         <h2 class="fw-bold mb-1"><i class="bi bi-mortarboard-fill text-primary me-2"></i>Histórico de Egresados y Finalizados</h2>
@@ -57,7 +57,6 @@
       {/if}
     </div>
 
-    <!-- TARJETAS DE MÉTRICAS (KPIs) -->
     <div class="row g-3 mb-4">
       <div class="col-md-4">
         <div class="card border-0 shadow-sm p-3 rounded-4 h-100 bg-white">
@@ -100,7 +99,6 @@
       </div>
     </div>
 
-    <!-- BARRA DE BÚSQUEDA Y FILTROS -->
     <div class="card border-0 shadow-sm rounded-4 mb-4 p-3 bg-white">
       <div class="row g-3 align-items-center">
         <div class="col-md-8">
@@ -120,7 +118,6 @@
       </div>
     </div>
 
-    <!-- TABLA DE EGRESADOS -->
     <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
       <div class="card-body p-0">
         <div class="table-responsive">
@@ -207,7 +204,6 @@
   </div>
 </div>
 
-<!-- REGISTRO DE EGRESADO -->
 <div class="modal fade" id="modalEgresado" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-0 rounded-4 shadow overflow-hidden">

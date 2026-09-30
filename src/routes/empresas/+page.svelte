@@ -1,4 +1,3 @@
-<!-- src/routes/empresas/+page.svelte -->
 <script>
   import { user, ROLES } from '$lib/stores/auth.js';
 
@@ -23,7 +22,6 @@
 <div class="bg-modulo-empresas flex-grow-1 py-4">
   <div class="container">
     
-    <!-- ENCABEZADO INSTITUCIONAL -->
     <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
       <div>
         <h2 class="fw-bold mb-1"><i class="bi bi-building text-warning me-2"></i>Gestión de Empresas Aliadas</h2>
@@ -37,7 +35,6 @@
       {/if}
     </div>
 
-    <!-- TARJETAS DE MÉTRICAS -->
     <div class="row g-3 mb-4">
       <div class="col-md-4">
         <div class="card border-0 shadow-sm p-3 rounded-4 h-100 bg-white">
@@ -80,7 +77,6 @@
       </div>
     </div>
 
-    <!-- BARRA DE HERRAMIENTAS -->
     <div class="card border-0 shadow-sm rounded-4 mb-4 p-3 bg-white">
       <div class="row g-3 align-items-center">
         <div class="col-md-8">
@@ -100,7 +96,6 @@
       </div>
     </div>
 
-    <!-- TABLA DE EMPRESAS -->
     <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
       <div class="card-body p-0">
         <div class="table-responsive">
@@ -116,6 +111,7 @@
               </tr>
             </thead>
             <tbody>
+            
               {#if empresasFiltradas.length === 0}
                 <tr>
                   <td colspan="6" class="text-center py-4 text-muted">No se encontraron empresas aliadas con los criterios de búsqueda.</td>
@@ -132,11 +128,13 @@
                         <span class="fw-bold text-dark">{e.razon}</span>
                       </div>
                     </td>
+
                     <td class="text-muted">{e.correo}</td>
                     <td><span class="badge bg-light text-dark border px-2 py-1">{e.sector}</span></td>
                     <td><span class="badge bg-success-subtle text-success px-3 py-1 rounded-pill">{e.estado}</span></td>
                     <td class="text-end pe-4">
-                      <!-- ADMINISTRADOR: Control total -->
+                      
+
                       {#if $user.rol === ROLES.ADMINISTRADOR}
                         <button class="btn btn-sm btn-primary me-1" data-bs-toggle="modal" data-bs-target="#modalEmpresa" aria-label="Editar empresa">
                           <i class="bi bi-pencil-fill me-1"></i> Editar
@@ -145,13 +143,12 @@
                           <i class="bi bi-trash-fill me-1"></i> Eliminar
                         </button>
                       
-                      <!-- EMPRESA: Solo actualiza sus propios datos -->
                       {:else if $user.rol === ROLES.EMPRESA}
                         <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalEmpresa">
                           <i class="bi bi-gear me-1"></i> Mi Perfil
                         </button>
                       
-                      <!-- ESTUDIANTE Y TUTOR: Solo consulta -->
+                      
                       {:else}
                         <span class="badge bg-secondary px-3 py-2">Solo Lectura</span>
                       {/if}
@@ -168,7 +165,6 @@
   </div>
 </div>
 
-<!-- EMPRESA -->
 <div class="modal fade" id="modalEmpresa" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-0 rounded-4 overflow-hidden shadow">
@@ -176,22 +172,26 @@
         <h5 class="modal-title fw-bold"><i class="bi bi-building-add me-2"></i>Información de la Empresa</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar modal"></button>
       </div>
+
       <div class="modal-body p-4">
         <form onsubmit={(e) => e.preventDefault()} class="row g-3">
           <div class="col-md-6">
             <label for="nit_emp" class="form-label fw-bold small">NIT</label>
             <input type="text" id="nit_emp" class="form-control bg-light" placeholder="900.000.000-0" />
           </div>
+
           <div class="col-md-6">
             <label for="razon_emp" class="form-label fw-bold small">Razón Social</label>
             <input type="text" id="razon_emp" class="form-control bg-light" placeholder="Nombre Empresa S.A.S" />
           </div>
+        
           <div class="col-12">
             <label for="email_emp" class="form-label fw-bold small">Correo Institucional / Contacto</label>
             <input type="email" id="email_emp" class="form-control bg-light" placeholder="contacto@empresa.com" />
           </div>
         </form>
       </div>
+
       <div class="modal-footer bg-light px-4 py-3">
         <button type="button" class="btn btn-outline-secondary px-4" data-bs-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-warning text-dark fw-bold px-4" data-bs-dismiss="modal">Guardar Cambios</button>

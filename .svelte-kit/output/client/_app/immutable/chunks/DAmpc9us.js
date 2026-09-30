@@ -1,0 +1,1 @@
+import{U as e}from"./Dhu3er4f.js";import"./CsvTTOF_.js";var t={ADMINISTRADOR:`administrador`,ESTUDIANTE:`estudiante`,TUTOR:`tutor`,EMPRESA:`empresa`},n=typeof window<`u`&&localStorage.getItem(`rol_simulado`)||t.ESTUDIANTE,r=e({id:1,nombre:`Usuario`,rol:n});function i(e){r.update(t=>(typeof window<`u`&&localStorage.setItem(`rol_simulado`,e),{...t,rol:e}))}export{i as n,r,t};
